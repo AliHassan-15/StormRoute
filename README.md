@@ -6,9 +6,9 @@
 
 | | |
 |---|---|
-| **Live demo** | _[placeholder — add Vercel URL]_ |
-| **API** | _[placeholder — add Render URL]_ |
-| **Walkthrough** | _[placeholder — add Loom URL]_ |
+| **Live demo** | [storm-route-peach.vercel.app](https://storm-route-peach.vercel.app/) |
+| **API** | [stormroute-api.onrender.com](https://stormroute-api.onrender.com/api/health) |
+| **Walkthrough** | _[https://www.loom.com/share/569886bf0ea945eaa04bed49abcb1be3]_ |
 
 ---
 
