@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "place.chicago",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6298,
+          41.8781
+        ]
+      },
+      "properties": {
+        "mapbox_id": "place.chicago",
+        "name": "Chicago",
+        "place_formatted": "Illinois, United States",
+        "full_address": "Chicago, Illinois, United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "place.chicago-heights",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6359,
+          41.5061
+        ]
+      },
+      "properties": {
+        "mapbox_id": "place.chicago-heights",
+        "name": "Chicago Heights",
+        "place_formatted": "Illinois, United States",
+        "full_address": "Chicago Heights, Illinois, United States"
+      }
+    }
+  ]
+}
