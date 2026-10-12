@@ -1,0 +1,55 @@
+﻿# Environment
+.env
+.env.*
+!.env.example
+!.env.e2e
+backend/.env
+frontend/.env
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.hypothesis/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+*.sqlite3
+db.sqlite3
+backend/staticfiles/*
+!backend/staticfiles/.gitkeep
+backend/requirements-freeze-tmp.txt
+
+# Node
+node_modules/
+frontend/dist/
+frontend/playwright-report/
+frontend/test-results/
+frontend/coverage/
+frontend/.lighthouseci/
+frontend/lighthouse-reports/
+*.tsbuildinfo
+
+# IDE / OS / editor tooling (not part of the product)
+.idea/
+.vscode/
+.cursor/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Misc
+*.log
+.turbo/
+
+# Editor tooling
+.cursor/
+

@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stormroute.local/schemas/analyze_response.json",
+  "title": "AnalyzeResponse",
+  "type": "object",
+  "required": [
+    "request_id",
+    "generated_at_utc",
+    "input",
+    "routes",
+    "recommendation",
+    "notices"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "request_id": { "type": "string", "minLength": 1 },
+    "generated_at_utc": { "type": "string", "minLength": 1 },
+    "input": {
+      "type": "object",
+      "required": [
+        "origin",
+        "destination",
+        "departure_time_utc",
+        "load_lb",
+        "interval_requested",
+        "interval_used_mi"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "origin": { "$ref": "#/$defs/place" },
+        "destination": { "$ref": "#/$defs/place" },
+        "departure_time_utc": { "type": "string" },
+        "load_lb": { "type": "number" },
+        "interval_requested": {
+          "anyOf": [
+            { "const": "auto" },
+            { "type": "integer", "enum": [10, 25, 50] }
+          ]
+        },
+        "interval_used_mi": { "type": "number" }
+      }
+    },
+    "routes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/route" }
+    },
+    "recommendation": {
+      "type": "object",
+      "required": ["route_id", "explanation", "all_blocked"],
+      "additionalProperties": false,
+      "properties": {
+        "route_id": { "type": ["string", "null"] },
+        "explanation": { "type": "string" },
+        "all_blocked": { "type": "boolean" }
+      }
+    },
+    "notices": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "place": {
+      "type": "object",
+      "required": ["label", "lat", "lng"],
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string" },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" }
+      }
+    },
+    "route": {
+      "type": "object",
+      "required": [
+        "id",
+        "label",
+        "rank",
+        "is_recommended",
+        "is_blocked",
+        "distance_mi",
+        "duration_s",
+        "delay_vs_fastest_s",
+        "arrival_utc",
+        "arrival_local",
+        "geometry",
+        "metrics",
+        "checkpoints"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "rank": { "type": "integer", "minimum": 1 },
+        "is_recommended": { "type": "boolean" },
+        "is_blocked": { "type": "boolean" },
+        "distance_mi": { "type": "number" },
+        "duration_s": { "type": "number" },
+        "delay_vs_fastest_s": { "type": "number" },
+        "arrival_utc": { "type": ["string", "null"] },
+        "arrival_local": { "type": ["string", "null"] },
+        "geometry": {
+          "type": "object",
+          "required": ["type", "coordinates"],
+          "properties": {
+            "type": { "const": "LineString" },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": { "type": "number" }
+              }
+            }
+          }
+        },
+        "metrics": { "$ref": "#/$defs/metrics" },
+        "checkpoints": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/checkpoint" }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "miles_by_level",
+        "severe_miles",
+        "high_miles",
+        "no_travel_miles",
+        "avg_risk",
+        "worst_level"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "miles_by_level": {
+          "type": "object",
+          "required": [
+            "LOW",
+            "MODERATE",
+            "HIGH",
+            "SEVERE",
+            "NO_TRAVEL",
+            "UNKNOWN"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "LOW": { "type": "number" },
+            "MODERATE": { "type": "number" },
+            "HIGH": { "type": "number" },
+            "SEVERE": { "type": "number" },
+            "NO_TRAVEL": { "type": "number" },
+            "UNKNOWN": { "type": "number" }
+          }
+        },
+        "severe_miles": { "type": "number" },
+        "high_miles": { "type": "number" },
+        "no_travel_miles": { "type": "number" },
+        "avg_risk": { "type": ["number", "null"] },
+        "worst_level": {
+          "type": ["string", "null"],
+          "enum": ["LOW", "MODERATE", "HIGH", "SEVERE", "NO_TRAVEL", null]
+        }
+      }
+    },
+    "checkpoint": {
+      "type": "object",
+      "required": [
+        "index",
+        "mile",
+        "lat",
+        "lng",
+        "eta_utc",
+        "eta_local",
+        "tz",
+        "coverage_from_mi",
+        "coverage_to_mi",
+        "weather",
+        "weather_status",
+        "level",
+        "level_name",
+        "condition_levels",
+        "reasons"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "index": { "type": "integer", "minimum": 0 },
+        "mile": { "type": "number" },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" },
+        "eta_utc": { "type": "string" },
+        "eta_local": { "type": "string" },
+        "tz": { "type": "string" },
+        "coverage_from_mi": { "type": "number" },
+        "coverage_to_mi": { "type": "number" },
+        "weather": {
+          "anyOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": ["wind_mph", "gust_mph", "rain_in_hr", "snow_in_hr"],
+              "properties": {
+                "wind_mph": { "type": "number" },
+                "gust_mph": { "type": ["number", "null"] },
+                "rain_in_hr": { "type": ["number", "null"] },
+                "snow_in_hr": { "type": ["number", "null"] }
+              }
+            }
+          ]
+        },
+        "weather_status": {
+          "type": "string",
+          "enum": ["ok", "missing", "out_of_range"]
+        },
+        "level": {
+          "anyOf": [
+            { "type": "null" },
+            { "type": "integer", "minimum": 1, "maximum": 5 }
+          ]
+        },
+        "level_name": { "type": "string" },
+        "condition_levels": {
+          "anyOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": ["wind", "rain", "snow"],
+              "properties": {
+                "wind": { "type": "string" },
+                "rain": { "type": "string" },
+                "snow": { "type": "string" }
+              }
+            }
+          ]
+        },
+        "reasons": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

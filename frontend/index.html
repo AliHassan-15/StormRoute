@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" suppressHydrationWarning>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StormRoute</title>
+    <link rel="preconnect" href="https://api.mapbox.com" crossorigin />
+    <link rel="preconnect" href="https://events.mapbox.com" crossorigin />
+    <link rel="preconnect" href="%VITE_API_BASE_URL%" crossorigin />
+    <link rel="dns-prefetch" href="https://api.mapbox.com" />
+    <script>
+      (function () {
+        try {
+          var key = "stormroute-theme";
+          var stored = localStorage.getItem(key);
+          var mode = stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
+          var prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+          var resolved = mode === "system" ? (prefersLight ? "light" : "dark") : mode;
+          var root = document.documentElement;
+          root.classList.remove("light", "dark");
+          root.classList.add(resolved);
+          root.dataset.theme = mode;
+          root.style.colorScheme = resolved;
+        } catch (e) {
+          document.documentElement.classList.add("dark");
+          document.documentElement.style.colorScheme = "dark";
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
