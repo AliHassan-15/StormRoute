@@ -1,0 +1,461 @@
+{
+  "request_id": "golden-scenario-1",
+  "generated_at_utc": "2026-10-12T12:00:00Z",
+  "input": {
+    "origin": { "label": "Dallas, TX", "lat": 32.7767, "lng": -96.797 },
+    "destination": { "label": "Chicago, IL", "lat": 41.8781, "lng": -87.6298 },
+    "departure_time_utc": "2026-10-14T12:00:00Z",
+    "load_lb": 20000,
+    "interval_requested": 25,
+    "interval_used_mi": 25
+  },
+  "routes": [
+    {
+      "id": "C",
+      "label": "Route C",
+      "rank": 1,
+      "is_recommended": true,
+      "is_blocked": false,
+      "distance_mi": 100,
+      "duration_s": 8400,
+      "delay_vs_fastest_s": 1500,
+      "arrival_utc": "2026-10-14T14:20:00Z",
+      "arrival_local": "2026-10-14T09:20:00-05:00",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-96.797, 32.7767],
+          [-92.0, 37.0],
+          [-87.6298, 41.8781]
+        ]
+      },
+      "metrics": {
+        "miles_by_level": {
+          "LOW": 50,
+          "MODERATE": 50,
+          "HIGH": 0,
+          "SEVERE": 0,
+          "NO_TRAVEL": 0,
+          "UNKNOWN": 0
+        },
+        "severe_miles": 0,
+        "high_miles": 0,
+        "no_travel_miles": 0,
+        "avg_risk": 1.5,
+        "worst_level": "MODERATE"
+      },
+      "checkpoints": [
+        {
+          "index": 0,
+          "mile": 0,
+          "lat": 32.7767,
+          "lng": -96.797,
+          "eta_utc": "2026-10-14T12:00:00Z",
+          "eta_local": "2026-10-14T07:00:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 0,
+          "coverage_to_mi": 12.5,
+          "weather": {
+            "wind_mph": 10,
+            "gust_mph": 14,
+            "rain_in_hr": 0,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 1,
+          "level_name": "LOW",
+          "condition_levels": { "wind": "LOW", "rain": "LOW", "snow": "LOW" },
+          "reasons": []
+        },
+        {
+          "index": 1,
+          "mile": 25,
+          "lat": 34.8,
+          "lng": -94.5,
+          "eta_utc": "2026-10-14T12:35:00Z",
+          "eta_local": "2026-10-14T07:35:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 12.5,
+          "coverage_to_mi": 37.5,
+          "weather": {
+            "wind_mph": 12,
+            "gust_mph": 16,
+            "rain_in_hr": 0,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 1,
+          "level_name": "LOW",
+          "condition_levels": { "wind": "LOW", "rain": "LOW", "snow": "LOW" },
+          "reasons": []
+        },
+        {
+          "index": 2,
+          "mile": 50,
+          "lat": 36.9,
+          "lng": -92.0,
+          "eta_utc": "2026-10-14T13:10:00Z",
+          "eta_local": "2026-10-14T08:10:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 37.5,
+          "coverage_to_mi": 62.5,
+          "weather": {
+            "wind_mph": 28,
+            "gust_mph": 34,
+            "rain_in_hr": 0.05,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 2,
+          "level_name": "MODERATE",
+          "condition_levels": { "wind": "MODERATE", "rain": "LOW", "snow": "LOW" },
+          "reasons": ["Wind 28.0 mph is Moderate."]
+        },
+        {
+          "index": 3,
+          "mile": 75,
+          "lat": 39.0,
+          "lng": -89.5,
+          "eta_utc": "2026-10-14T13:45:00Z",
+          "eta_local": "2026-10-14T08:45:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 62.5,
+          "coverage_to_mi": 87.5,
+          "weather": {
+            "wind_mph": 30,
+            "gust_mph": 36,
+            "rain_in_hr": 0,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 2,
+          "level_name": "MODERATE",
+          "condition_levels": { "wind": "MODERATE", "rain": "LOW", "snow": "LOW" },
+          "reasons": ["Wind 30.0 mph is Moderate."]
+        },
+        {
+          "index": 4,
+          "mile": 100,
+          "lat": 41.8781,
+          "lng": -87.6298,
+          "eta_utc": "2026-10-14T14:20:00Z",
+          "eta_local": "2026-10-14T09:20:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 87.5,
+          "coverage_to_mi": 100,
+          "weather": {
+            "wind_mph": 8,
+            "gust_mph": 12,
+            "rain_in_hr": 0,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 1,
+          "level_name": "LOW",
+          "condition_levels": { "wind": "LOW", "rain": "LOW", "snow": "LOW" },
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "label": "Route B",
+      "rank": 2,
+      "is_recommended": false,
+      "is_blocked": false,
+      "distance_mi": 100,
+      "duration_s": 6900,
+      "delay_vs_fastest_s": 0,
+      "arrival_utc": "2026-10-14T13:55:00Z",
+      "arrival_local": "2026-10-14T08:55:00-05:00",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-96.797, 32.7767],
+          [-91.5, 37.5],
+          [-87.6298, 41.8781]
+        ]
+      },
+      "metrics": {
+        "miles_by_level": {
+          "LOW": 25,
+          "MODERATE": 25,
+          "HIGH": 50,
+          "SEVERE": 0,
+          "NO_TRAVEL": 0,
+          "UNKNOWN": 0
+        },
+        "severe_miles": 0,
+        "high_miles": 50,
+        "no_travel_miles": 0,
+        "avg_risk": 2.25,
+        "worst_level": "HIGH"
+      },
+      "checkpoints": [
+        {
+          "index": 0,
+          "mile": 0,
+          "lat": 32.7767,
+          "lng": -96.797,
+          "eta_utc": "2026-10-14T12:00:00Z",
+          "eta_local": "2026-10-14T07:00:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 0,
+          "coverage_to_mi": 12.5,
+          "weather": {
+            "wind_mph": 10,
+            "gust_mph": 12,
+            "rain_in_hr": 0,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 1,
+          "level_name": "LOW",
+          "condition_levels": { "wind": "LOW", "rain": "LOW", "snow": "LOW" },
+          "reasons": []
+        },
+        {
+          "index": 1,
+          "mile": 25,
+          "lat": 35.0,
+          "lng": -94.0,
+          "eta_utc": "2026-10-14T12:28:00Z",
+          "eta_local": "2026-10-14T07:28:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 12.5,
+          "coverage_to_mi": 37.5,
+          "weather": {
+            "wind_mph": 38,
+            "gust_mph": 45,
+            "rain_in_hr": 0,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 3,
+          "level_name": "HIGH",
+          "condition_levels": { "wind": "HIGH", "rain": "LOW", "snow": "LOW" },
+          "reasons": ["Wind 38.0 mph is High."]
+        },
+        {
+          "index": 2,
+          "mile": 50,
+          "lat": 37.2,
+          "lng": -91.5,
+          "eta_utc": "2026-10-14T12:57:00Z",
+          "eta_local": "2026-10-14T07:57:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 37.5,
+          "coverage_to_mi": 62.5,
+          "weather": {
+            "wind_mph": 40,
+            "gust_mph": 48,
+            "rain_in_hr": 0,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 3,
+          "level_name": "HIGH",
+          "condition_levels": { "wind": "HIGH", "rain": "LOW", "snow": "LOW" },
+          "reasons": ["Wind 40.0 mph is High."]
+        },
+        {
+          "index": 3,
+          "mile": 75,
+          "lat": 39.4,
+          "lng": -89.2,
+          "eta_utc": "2026-10-14T13:26:00Z",
+          "eta_local": "2026-10-14T08:26:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 62.5,
+          "coverage_to_mi": 87.5,
+          "weather": {
+            "wind_mph": 28,
+            "gust_mph": 32,
+            "rain_in_hr": 0,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 2,
+          "level_name": "MODERATE",
+          "condition_levels": { "wind": "MODERATE", "rain": "LOW", "snow": "LOW" },
+          "reasons": ["Wind 28.0 mph is Moderate."]
+        },
+        {
+          "index": 4,
+          "mile": 100,
+          "lat": 41.8781,
+          "lng": -87.6298,
+          "eta_utc": "2026-10-14T13:55:00Z",
+          "eta_local": "2026-10-14T08:55:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 87.5,
+          "coverage_to_mi": 100,
+          "weather": {
+            "wind_mph": 9,
+            "gust_mph": 11,
+            "rain_in_hr": 0,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 1,
+          "level_name": "LOW",
+          "condition_levels": { "wind": "LOW", "rain": "LOW", "snow": "LOW" },
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "A",
+      "label": "Route A",
+      "rank": 3,
+      "is_recommended": false,
+      "is_blocked": false,
+      "distance_mi": 100,
+      "duration_s": 7200,
+      "delay_vs_fastest_s": 300,
+      "arrival_utc": "2026-10-14T14:00:00Z",
+      "arrival_local": "2026-10-14T09:00:00-05:00",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-96.797, 32.7767],
+          [-90.5, 38.0],
+          [-87.6298, 41.8781]
+        ]
+      },
+      "metrics": {
+        "miles_by_level": {
+          "LOW": 25,
+          "MODERATE": 25,
+          "HIGH": 25,
+          "SEVERE": 25,
+          "NO_TRAVEL": 0,
+          "UNKNOWN": 0
+        },
+        "severe_miles": 25,
+        "high_miles": 25,
+        "no_travel_miles": 0,
+        "avg_risk": 2.5,
+        "worst_level": "SEVERE"
+      },
+      "checkpoints": [
+        {
+          "index": 0,
+          "mile": 0,
+          "lat": 32.7767,
+          "lng": -96.797,
+          "eta_utc": "2026-10-14T12:00:00Z",
+          "eta_local": "2026-10-14T07:00:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 0,
+          "coverage_to_mi": 12.5,
+          "weather": {
+            "wind_mph": 10,
+            "gust_mph": 12,
+            "rain_in_hr": 0,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 1,
+          "level_name": "LOW",
+          "condition_levels": { "wind": "LOW", "rain": "LOW", "snow": "LOW" },
+          "reasons": []
+        },
+        {
+          "index": 1,
+          "mile": 25,
+          "lat": 35.2,
+          "lng": -93.8,
+          "eta_utc": "2026-10-14T12:30:00Z",
+          "eta_local": "2026-10-14T07:30:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 12.5,
+          "coverage_to_mi": 37.5,
+          "weather": {
+            "wind_mph": 30,
+            "gust_mph": 36,
+            "rain_in_hr": 0,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 2,
+          "level_name": "MODERATE",
+          "condition_levels": { "wind": "MODERATE", "rain": "LOW", "snow": "LOW" },
+          "reasons": ["Wind 30.0 mph is Moderate."]
+        },
+        {
+          "index": 2,
+          "mile": 50,
+          "lat": 37.5,
+          "lng": -90.5,
+          "eta_utc": "2026-10-14T13:00:00Z",
+          "eta_local": "2026-10-14T08:00:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 37.5,
+          "coverage_to_mi": 62.5,
+          "weather": {
+            "wind_mph": 48,
+            "gust_mph": 55,
+            "rain_in_hr": 0,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 4,
+          "level_name": "SEVERE",
+          "condition_levels": { "wind": "SEVERE", "rain": "LOW", "snow": "LOW" },
+          "reasons": ["Wind 48.0 mph is Severe."]
+        },
+        {
+          "index": 3,
+          "mile": 75,
+          "lat": 39.6,
+          "lng": -88.8,
+          "eta_utc": "2026-10-14T13:30:00Z",
+          "eta_local": "2026-10-14T08:30:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 62.5,
+          "coverage_to_mi": 87.5,
+          "weather": {
+            "wind_mph": 38,
+            "gust_mph": 44,
+            "rain_in_hr": 0,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 3,
+          "level_name": "HIGH",
+          "condition_levels": { "wind": "HIGH", "rain": "LOW", "snow": "LOW" },
+          "reasons": ["Wind 38.0 mph is High."]
+        },
+        {
+          "index": 4,
+          "mile": 100,
+          "lat": 41.8781,
+          "lng": -87.6298,
+          "eta_utc": "2026-10-14T14:00:00Z",
+          "eta_local": "2026-10-14T09:00:00-05:00",
+          "tz": "America/Chicago",
+          "coverage_from_mi": 87.5,
+          "coverage_to_mi": 100,
+          "weather": {
+            "wind_mph": 8,
+            "gust_mph": 10,
+            "rain_in_hr": 0,
+            "snow_in_hr": 0
+          },
+          "weather_status": "ok",
+          "level": 1,
+          "level_name": "LOW",
+          "condition_levels": { "wind": "LOW", "rain": "LOW", "snow": "LOW" },
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "recommendation": {
+    "route_id": "C",
+    "explanation": "Recommended Route C (C) with 0 Severe and 0 High miles. Compared with Route B, this is 0 vs 0 Severe miles and 0 vs 50 High miles. It is 25 minutes slower than Route B (B), the fastest route.",
+    "all_blocked": false
+  },
+  "notices": []
+}

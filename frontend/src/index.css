@@ -1,0 +1,329 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+
+  --radius-control: 10px;
+  --radius-panel: 16px;
+  --radius-chip: 9999px;
+
+  --color-bg: var(--sr-bg);
+  --color-surface: var(--sr-surface);
+  --color-surface-raised: var(--sr-surface-raised);
+  --color-border: var(--sr-border);
+  --color-text: var(--sr-text);
+  --color-text-muted: var(--sr-text-muted);
+  --color-brand: var(--sr-brand);
+  --color-accent: var(--sr-accent);
+  --color-accent-contrast: var(--sr-accent-contrast);
+  --color-focus-ring: var(--sr-focus-ring);
+
+  --color-risk-low: var(--sr-risk-low);
+  --color-risk-moderate: var(--sr-risk-moderate);
+  --color-risk-high: var(--sr-risk-high);
+  --color-risk-severe: var(--sr-risk-severe);
+  --color-risk-no-travel: var(--sr-risk-no-travel);
+  --color-risk-unknown: var(--sr-risk-unknown);
+
+  --color-background: var(--sr-bg);
+  --color-foreground: var(--sr-text);
+  --color-card: var(--sr-surface);
+  --color-card-foreground: var(--sr-text);
+  --color-primary: var(--sr-accent);
+  --color-primary-foreground: var(--sr-accent-contrast);
+  --color-secondary: var(--sr-surface-raised);
+  --color-secondary-foreground: var(--sr-text);
+  --color-muted: var(--sr-surface-raised);
+  --color-muted-foreground: var(--sr-text-muted);
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fff;
+  --color-ring: var(--sr-focus-ring);
+
+  --shadow-soft: var(--sr-shadow-soft);
+  --shadow-panel: var(--sr-shadow-panel);
+  --ease-sr: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration-hover: 150ms;
+  --duration-panel: 220ms;
+}
+
+:root,
+.light {
+  --sr-bg: #f3f7f8;
+  --sr-surface: #ffffff;
+  --sr-surface-raised: #f8fbfc;
+  --sr-border: rgba(6, 20, 25, 0.1);
+  --sr-text: #0b1f27;
+  /* Dark enough for AA on white / raised surfaces. */
+  --sr-text-muted: #3a515c;
+  --color-text-muted: #3a515c;
+  --color-muted-foreground: #3a515c;
+  --sr-brand: #0b3c4d;
+  --sr-accent: #0d6b63;
+  --sr-accent-contrast: #ffffff;
+  --sr-focus-ring: #0f766e;
+  --sr-risk-low: #22c55e;
+  --sr-risk-moderate: #eab308;
+  --sr-risk-high: #f97316;
+  --sr-risk-severe: #ef4444;
+  --sr-risk-no-travel: #c026d3;
+  --sr-risk-unknown: #64748b;
+  --sr-shadow-soft:
+    0 1px 2px rgba(6, 20, 25, 0.04),
+    0 8px 24px rgba(6, 20, 25, 0.06);
+  --sr-shadow-panel:
+    0 1px 2px rgba(6, 20, 25, 0.04),
+    0 12px 40px rgba(6, 20, 25, 0.08);
+  --sr-glass-bg: color-mix(in srgb, var(--sr-surface) 72%, transparent);
+  --sr-glass-highlight: rgba(255, 255, 255, 0.55);
+}
+
+.dark {
+  --sr-bg: #061419;
+  --sr-surface: #0b1e26;
+  --sr-surface-raised: #11303b;
+  --sr-border: rgba(255, 255, 255, 0.08);
+  --sr-text: #e8f1f4;
+  /* AA on surface / surface-raised (axe samples small type conservatively). */
+  --sr-text-muted: #c5d8e0;
+  --color-text-muted: #c5d8e0;
+  --color-muted-foreground: #c5d8e0;
+  --sr-brand: #5eead4;
+  --sr-accent: #2dd4bf;
+  --sr-accent-contrast: #04211e;
+  --sr-focus-ring: #5eead4;
+  --sr-risk-low: #22c55e;
+  --sr-risk-moderate: #eab308;
+  --sr-risk-high: #f97316;
+  --sr-risk-severe: #ef4444;
+  --sr-risk-no-travel: #c026d3;
+  --sr-risk-unknown: #64748b;
+  --sr-shadow-soft:
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 8px 28px rgba(0, 0, 0, 0.28);
+  --sr-shadow-panel:
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    0 16px 48px rgba(0, 0, 0, 0.35);
+  --sr-glass-bg: color-mix(in srgb, var(--sr-surface) 72%, transparent);
+  --sr-glass-highlight: rgba(255, 255, 255, 0.06);
+}
+
+@layer base {
+  * {
+    border-color: var(--sr-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    font-feature-settings: "tnum" 1, "lnum" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--sr-bg);
+    color: var(--sr-text);
+  }
+
+  .tabular-nums,
+  .font-mono,
+  [data-numeric="true"] {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--sr-focus-ring);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* components layer so Tailwind utilities (absolute, rounded-none, etc.) can override */
+@layer components {
+  .glass-panel {
+    background: var(--sr-glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--sr-border);
+    border-radius: var(--radius-panel);
+    box-shadow: var(--sr-shadow-panel);
+    position: relative;
+  }
+
+  .glass-panel::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 1px 0 var(--sr-glass-highlight);
+  }
+}
+
+@layer utilities {
+  /* Invisible scrollbar — column still scrolls with wheel/trackpad */
+  .sr-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .sr-scroll::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  .map-grid {
+    background-color: var(--sr-bg);
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--sr-accent) 12%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--sr-accent) 12%, transparent) 1px, transparent 1px),
+      radial-gradient(ellipse at 30% 20%, color-mix(in srgb, var(--sr-brand) 45%, transparent), transparent 55%),
+      radial-gradient(ellipse at 80% 70%, color-mix(in srgb, var(--sr-accent) 18%, transparent), transparent 50%);
+    background-size:
+      48px 48px,
+      48px 48px,
+      100% 100%,
+      100% 100%;
+  }
+
+  .risk-swatch-low {
+    background: var(--sr-risk-low);
+  }
+  .risk-swatch-moderate {
+    background: var(--sr-risk-moderate);
+  }
+  .risk-swatch-high {
+    background: var(--sr-risk-high);
+  }
+  .risk-swatch-severe {
+    background: var(--sr-risk-severe);
+  }
+  .risk-swatch-no-travel {
+    background-color: var(--sr-risk-no-travel);
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.28) 0 2px,
+      transparent 2px 6px
+    );
+  }
+  .risk-swatch-unknown {
+    background-color: var(--sr-risk-unknown);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.55) 1px, transparent 1.2px);
+    background-size: 5px 5px;
+  }
+
+  .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--sr-surface-raised) 100%, transparent) 0%,
+      color-mix(in srgb, var(--sr-text-muted) 22%, transparent) 50%,
+      color-mix(in srgb, var(--sr-surface-raised) 100%, transparent) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.4s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton-shimmer {
+      animation: none;
+      background: var(--sr-surface-raised);
+    }
+
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Mapbox OD markers + compact checkpoint popup */
+.sr-od-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 2px solid var(--sr-accent);
+  background: var(--sr-surface);
+  color: var(--sr-text);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: var(--sr-shadow-soft);
+}
+
+.sr-map-popup .mapboxgl-popup-content {
+  padding: 8px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--sr-surface) 96%, transparent);
+  color: var(--sr-text);
+  border: 1px solid var(--sr-border);
+  box-shadow: var(--sr-shadow-soft);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.sr-map-popup .mapboxgl-popup-tip {
+  border-top-color: var(--sr-surface);
+}
+
+.sr-truck-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  pointer-events: none;
+}
+
+.sr-truck-marker__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 2px solid #f8fafc;
+  background: var(--sr-accent, #2dd4bf);
+  box-shadow: 0 0 0 2px rgba(6, 20, 25, 0.45);
+}
+
+.sr-truck-marker__label {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--sr-surface, #0b1e26);
+  color: var(--sr-text, #e8f1f4);
+  border: 1px solid var(--sr-border, #1e3a44);
+  font-size: 10px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  white-space: nowrap;
+}
